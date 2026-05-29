@@ -20,7 +20,7 @@ const LoginPage = () => {
             callbackURL: '/'
         })
 
-        console.log(data);
+        //console.log(data);
     }
     const handleGoogleSignIn = async () => {
         const data = await authClient.signIn.social({
