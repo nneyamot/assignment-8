@@ -6,6 +6,7 @@ import Image from "next/image";
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import profile_icon from '../../assets/profile_icon.jpg'
 const NavBar = () => {
 
     const pathname = usePathname();
@@ -44,7 +45,7 @@ const NavBar = () => {
                 {
                     user ? <Link href={'/profile'}><h1 className="font-bold text-xl text-green-800">{user.name}</h1></Link> : ' '
                 }
-                <Image src={icon} alt="icon" width={'70'} height={'70'} className="rounded-xl "></Image>
+                <Image src={profile_icon} alt="icon" width={'50'} height={'50'} className="rounded-xl"></Image>
                 {
                     user ?
                         (
