@@ -15,7 +15,7 @@ const AnimalsCards = async() => {
                 
                 <div key={animal.id} className="space-y-5 p-4 rounded-2xl text-left shadow-2xl ">
                     <Image
-                    src={img} alt="items pictures " width={'200'} height={'200'}
+                    src={animal.image} alt="items pictures " width={'200'} height={'200'}
                     className="w-full"
                     ></Image>
                     <h2 className="font-extrabold text-xl">{animal.name}</h2>

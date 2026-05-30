@@ -10,13 +10,17 @@ export const auth = betterAuth({
     database: mongodbAdapter(db, {
         client
     }),
+
+    trustedOrigins: [
+        "https://assignment-8-jt3irkge9-gaffer-s-projects.vercel.app"
+    ],
     emailAndPassword: {
         enabled: true,
     },
-     socialProviders: {
-        google: { 
-            clientId: process.env.GOOGLE_CLIENT_ID, 
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET , 
-        }, 
+    socialProviders: {
+        google: {
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        },
     },
 });

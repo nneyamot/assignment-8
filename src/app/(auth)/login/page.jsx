@@ -3,6 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import { Button, Checkbox, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
 
@@ -19,6 +20,13 @@ const LoginPage = () => {
             // name: data.name
             callbackURL: '/'
         })
+        if (error) {
+            toast.error('login fail', { position: "top-center" })
+
+        }
+        else {
+            toast.success('Successfully login', { position: "top-center" })
+        }
 
         //console.log(data);
     }

@@ -1,14 +1,17 @@
 'use client'
 import Link from "next/link";
-import logo from "../../assets/images.jpg"
+import logo from '../../assets/NNLogo.png'
 import icon from '../../assets/icon.jpg'
 import Image from "next/image";
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 const NavBar = () => {
+
+    const pathname = usePathname();
     const links = <>
-        <li ><Link href='/'>Home</Link></li>
-        <li><Link href='/allAnimals'>All Animals</Link></li>
+        <li className="text-xl font-bold"><Link href='/' className={pathname === '/' ? 'text-green-800 font-extrabold border-b-3 ' : ' '}>Home</Link></li>
+        <li className="text-xl font-bold"><Link href='/allAnimals' className={pathname === '/allAnimals' ? 'text-green-800 font-extrabold border-b-3 ' : ' '}>All Animals</Link></li>
     </>
     const { data, isPending } = authClient.useSession()
     const user = data?.user;
@@ -28,8 +31,8 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="flex items-center gap-3 ">
-                    <Image src={logo} alt="logo" width={'40'} height={'40'} className="rounded-xl" />
-                    <h1 className="text-xl font-bold text-green-600">Qurbani</h1>
+                    <Image src={logo} alt="logo" width={'80'} height={'80'} className="rounded-xl" />
+                    <h1 className="text-2xl font-extrabold text-green-800">QurbaniHat_26</h1>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -39,22 +42,21 @@ const NavBar = () => {
             </div>
             <div className="navbar-end flex gap-3">
                 {
-                    user ? <Link href={'/profile'}><h1 className="font-bold text-xl text-green-600">{user.name}</h1></Link>  : ' '
+                    user ? <Link href={'/profile'}><h1 className="font-bold text-xl text-green-800">{user.name}</h1></Link> : ' '
                 }
                 <Image src={icon} alt="icon" width={'70'} height={'70'} className="rounded-xl "></Image>
                 {
                     user ?
                         (
-                            <button className="btn text-xl font-bold text-green-600"
+                            <button className="btn text-xl font-bold text-green-800"
                                 onClick={async () => {
                                     await authClient.signOut();
                                 }}
                             >Logout</button>
                         ) :
                         (<Link href={'/login'}>
-                            <button className="btn text-xl font-bold text-green-600">Login</button>
+                            <button className="btn text-xl font-bold text-green-800">Login</button>
                         </Link>)
-
                 }
             </div>
         </div>

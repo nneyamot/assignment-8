@@ -2,6 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import { Button, Checkbox, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 
 const RegistrationPage = () => {
@@ -14,10 +15,17 @@ const RegistrationPage = () => {
         const { data: res, error } = await authClient.signUp.email({
             email: data.email,
             password: data.password,
-            name:data.name
+            name: data.name,
+            image: data.image,
         })
+        if (error) {
+            toast.error('Registration fail', { position: "top-center" })
 
-        console.log(res, error);
+        }
+        else {
+            toast.success('Successfully register', { position: "top-center" })
+        }
+      
     }
 
     return (
@@ -32,6 +40,19 @@ const RegistrationPage = () => {
                 >
                     {/* <Label>Email</Label> */}
                     <Input placeholder="your name" />
+                    <FieldError />
+                </TextField>
+
+                <TextField
+                    isRequired
+                    name="image"
+                    type="text"
+
+                >
+                    {/* <Label>Email</Label> */}
+                    <Input
+
+                        placeholder="your photo link" />
                     <FieldError />
                 </TextField>
 

@@ -6,7 +6,7 @@ const ProfilePage = () => {
   
     const {data}=authClient.useSession();
     const user = data?.user;
-    console.log(user?.name,user?.email)
+    //console.log(user?.name,user?.email,user?.image)
 
     return (
         <div className="space-y-5 mt-10 container mx-auto">
@@ -14,7 +14,7 @@ const ProfilePage = () => {
             <div className="flex justify-between items-center mb-10">
                 <div className="flex gap-10 items-center">
                      <Image
-                      src={img} alt='icon' width={'80'} height={'80'}
+                      src={user?.image} alt='user icon' width={'80'} height={'80'}
                       className="rounded-2xl"
                      ></Image>
                     <div>
@@ -30,7 +30,8 @@ const ProfilePage = () => {
             <div className="text-lg space-y-3">
                 <h1>Name         <span className="ml-50">{user?.name}</span></h1>
                 <h1>Email        <span className="ml-50">{user?.email}</span></h1>
-                <p>Photo link    <span className="ml-50">{user?.link}</span></p>
+                <p>Photo link    <span className="ml-50">{user?.image
+                    }</span></p>
                 <p>Member since  <span className="ml-33">may, 20, 2026</span></p>
             </div>
         </div>

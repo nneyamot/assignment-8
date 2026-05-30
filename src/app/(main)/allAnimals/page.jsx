@@ -25,17 +25,19 @@ const AllAnimalsPage = async () => {
                     animals.map(animal =>
                     //  <AllAnimalsPage key={animal.id} animal={animal}></AllAnimalsPage>
 
-                    (<div key={animal.id} className="space-y-5 p-4 rounded-2xl text-left shadow-2xl ">
+                    (<div key={animal.id} className="space-y-5 p-4 rounded-2xl text-left shadow-2xl flex flex-col h-full ">
                         <Image
-                            src={img} alt="items pictures " width={'200'} height={'200'}
+                            src={animal.image} alt="items pictures " width={'200'} height={'200'}
                             className="w-full"
                         ></Image>
                         <h2 className="font-extrabold text-xl">{animal.name}</h2>
                         <p className="font-semibold">{animal.breed}</p>
                         <h2 className="font-extrabold text-2xl">$ {animal.price}</h2>
                         {
-                            (<Link href={`/details/${animal.id}`}>
-                                <button className="btn bg-green-800 text-white w-full">Details</button>
+                            (<Link
+                             className="mt-auto"
+                            href={`/details/${animal.id}`}>
+                                <button className="btn bg-green-800 text-white w-full ">See Details</button>
                             </Link>)
                             // : (<Link href={'/login'}></Link>)
                         }
